@@ -66,13 +66,13 @@ contract Strawberries{
     
      function updateMessage(uint sID, string memory message) public returns (bool){
         bool updated = false; 
-        /*TODO add some shit like this to verify sender is a friend 
+        //remove this line if you want to test without adding friends
         if (bytes(friends[msg.sender].name).length != 0) { // Friend exist
-        */
             if (bytes(strawberries[sID].message).length != 0) {       //valid strawberry id  
-                strawberries[sID].message = "eatma";
+                strawberries[sID].message = message;
                 updated = true; 
             } 
+        }
         return updated; 
     }
     
