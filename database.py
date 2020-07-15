@@ -12,13 +12,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Product (
 				temperature real)
 			''')
 
-cursor.execute('''CREATE TABLE IF NOT EXISTS Test (
-				fruit varchar,
-				size varchar, 
-				color varchar)
-			''')
-
-cursor.execute("Select * from Test")
+cursor.execute("Select * from Product")
 print(cursor.fetchall())
 
 

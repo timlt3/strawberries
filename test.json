@@ -1,5 +1,20 @@
-{
-    "fruit": "Apple",
-    "size": "Large",
-    "color": "Red"
-}
+[
+	{
+	    "productID": "s1",
+	    "phase": "picking",
+	    "status": "good",
+	    "message": "picking has finished"
+	},
+	{
+	    "productID": "s2",
+	    "phase": "packing",
+	    "status": "warning",
+	    "message": "packing is unsucessful"
+	},
+	{
+	    "productID": "s3",
+	    "phase": "packing",
+	    "status": "good",
+	    "message": "packing is now sucessful"
+	}
+]
