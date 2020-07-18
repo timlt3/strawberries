@@ -1,18 +1,18 @@
 [
 	{
-	    "productID": "s1",
+	    "product_ID": "s1",
 	    "phase": "picking",
 	    "status": "good",
 	    "message": "picking has finished"
 	},
 	{
-	    "productID": "s2",
+	    "product_ID": "s2",
 	    "phase": "packing",
 	    "status": "warning",
 	    "message": "packing is unsucessful"
 	},
 	{
-	    "productID": "s3",
+	    "product_ID": "s3",
 	    "phase": "packing",
 	    "status": "good",
 	    "message": "packing is now sucessful"
