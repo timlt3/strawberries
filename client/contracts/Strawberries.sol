@@ -12,14 +12,16 @@ contract Strawberries{
     
     struct Friend{ 
         string name;
+        Roles role;
     } 
     
     mapping(uint => Strawberry) public strawberries; //list of strawberries(id -> strawberry)
     mapping (address => Friend) public friends;
     
-    //enum Roles {Picker, Processor, Packer, Transporter, Seller} 
+    enum Roles {Picker, Processor, Packer, Transporter, Seller} //0 1 2 3 
     enum Phases {Picking, Processing, Packing, Transporting, Selling}
     enum Status {Good, Warning, UnfitForSale} 
+
     
     uint public numStrawberries = 0;
     uint public numFriends = 0; 
@@ -44,13 +46,24 @@ contract Strawberries{
     }
     
     //Add a new friend 
-    /*TODO create a modifier that makes this restricted*/ 
-    function addFriend(address friendAddress, string memory name) public returns (uint){ 
+    function addFriend(address friendAddress, string memory name, Roles role) public restricted returns (uint){ 
         Friend memory f; 
         f.name = name; 
+        f.role = role;
         friends[friendAddress] = f; 
         numFriends++;
         return numFriends; 
+    }
+    
+    function updatePhase(uint sID, Phases phase, Roles role) public returns (bool) {
+        bool updated = false;
+        if (bytes(friends[msg.sender].name).length != 0 && friends[msg.sender].role != role) { //authorised user to update phase
+            if (bytes(strawberries[sID].message).length != 0) {     //valid strawberry id
+                strawberries[sID].phase = phase;
+                updated = true;
+            }
+        }
+        return updated;
     }
     
     function updateStatus(uint sID, Status status) public returns (bool){
@@ -74,6 +87,11 @@ contract Strawberries{
             } 
         }
         return updated; 
+    }
+    
+    modifier restricted() {
+        require(msg.sender == administrator);
+        _;
     }
     
                 
