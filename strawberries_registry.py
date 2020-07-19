@@ -45,5 +45,17 @@ class strawberries_registry:
 					query = (f'INSERT INTO Product ({columns}) VALUES ({values})') 
 					cursor.execute(query)
 
+	def get_strawberries_data(self, product_ID: str):
+		with sqlite3.connect(self._db_path) as connection:
+			cursor = connection.cursor()
+			query = (f'SELECT * FROM Product WHERE product_ID = (\'{product_ID}\')')
+			cursor.execute(query)
+			print(cursor.fetchall())
+
 s = strawberries_registry()
 print(s.insert_strawberries_data())
+print("get product_ID = s1")
+s.get_strawberries_data("s1")
+
+
+

@@ -4,7 +4,7 @@ conn = sqlite3.connect('strawberries.db')
 cursor = conn.cursor()
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS Product (
-				productID varchar PRIMARY KEY not null,
+				product_ID varchar not null,
 				phase varchar,
 				status varchar,
 				message text,
