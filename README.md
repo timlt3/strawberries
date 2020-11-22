@@ -1,28 +1,7 @@
-# strawberries
-COMP6452 Assignment 2 Code
-Timothy WU
-Yanjie (Henry) WANG
-Manlin WANG
+#Strawberries
 
-TODO (open) 
-take the smart contract code and add functionality so that only the assigned role can sign off on a particular stage of the product.
+This application is a full-stack logistics supply chain system that provides an audit trail to track products in their lifecycle.
 
-i.e. make new hashes for each of the stages 
-mapping (address => Friend) public pickers;
-mapping (address => Friend) public processors;
-...
-etc etc 
+Actors in the system are able to sign-off on various stages of the products and these transactions are then captured and stored on the blockchain. The advantages of using blockchain technology in this system are that the signoff messages are immutable, easily traceable and decentralized. Users are given a client which handles Authentication using a NOSQL database Google Firebase, and after authentication has occured, depending on their permission status on the known-actors list are then able to perform their signoff functions. 
 
-and make additional functions that only allow for one stage change: 
-e.g. 
-
-function pickerSignoff(uint sID) public returns (bool){
-        bool updated = false; 
-        if (bytes(friends[msg.sender].name).length != 0) { // Friend exist TODO make sure this guy is a picker as well
-            if (bytes(strawberries[sID].message).length != 0) {       //valid strawberry id  
-                strawberries[sID].status = status.processing; //after the picking phase is complete the picker can set it to the following phase
-                updated = true; 
-            } 
-        }
-        return updated; 
-    }
+Technologies used on this project are Solidity, Truffle and React.js. 
